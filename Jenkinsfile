@@ -1,5 +1,5 @@
 pipeline {
-  agent any 
+  agent any
   tools {
     maven 'Maven'
   }
@@ -10,10 +10,11 @@ pipeline {
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                     echo "JAVA_HOME = ${JAVA_HOME}"
-            '''.trim() 
+                    echo "For testing only"
+            '''.trim()
       }
     }
-    
+
     /*stage ('Check-Git-Secrets') {
       steps {
         sh 'rm trufflehog || true'
@@ -21,7 +22,7 @@ pipeline {
         sh 'cat trufflehog'
       }
     }
-    
+
     stage ('Source Composition Analysis') {
       steps {
          sh 'rm owasp* || true'
@@ -29,10 +30,10 @@ pipeline {
          sh 'chmod +x owasp-dependency-check.sh'
          sh 'bash owasp-dependency-check.sh'
          sh 'cat /var/lib/jenkins/OWASP-Dependency-Check/reports/dependency-check-report.xml'
-        
+
       }
     }
-    
+
     stage ('SAST') {
       steps {
         withSonarQubeEnv('sonar') {
@@ -41,20 +42,20 @@ pipeline {
         }
       }
     }*/
-    
+
     stage ('Build') {
       steps {
       sh 'mvn clean package'
        }
     }
-    
+
     stage ('Deploy-To-Tomcat') {
             steps {
                 sh 'cp target/*.war /root/tomcat8/webapps/webapp.war'
-            }       
+            }
     }
-    
-    
+
+
     /*stage ('DAST') {
       steps {
         sshagent(['zap']) {
@@ -62,6 +63,6 @@ pipeline {
         }
       }
     }*/
-    
+
   }
 }
