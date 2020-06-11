@@ -57,6 +57,17 @@ pipeline {
                 sh 'sudo cp target/*.war /root/tomcat8/webapps/webapp.war'
             }
     }
+    stage('Restart Tomcat') {
+        steps {
+            echo 'Restarting Tomcat.....'
+            sh '''
+                sudo cd /root/tomcat8/bin
+                ./shutdown.sh
+                sleep(10s)
+                ./startup.sh
+            '''
+        }
+    }
 
 
     /*stage ('DAST') {
