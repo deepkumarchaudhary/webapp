@@ -18,7 +18,7 @@ pipeline {
       }
     }
 
-    /*stage ('Check-Git-Secrets') {
+    stage ('Check-Git-Secrets') {
       steps {
         sh 'rm trufflehog || true'
         sh 'docker run gesellix/trufflehog --json https://github.com/deepkumarchaudhary/webapp.git > trufflehog'
@@ -26,7 +26,7 @@ pipeline {
       }
     }
 
-    stage ('Source Composition Analysis') {
+    /*stage ('Source Composition Analysis') {
       steps {
          sh 'rm owasp* || true'
          sh 'wget "https://raw.githubusercontent.com/deepkumarchaudhary/webapp/master/owasp-dependency-check.sh" '
