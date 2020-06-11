@@ -64,7 +64,7 @@ pipeline {
                 sudo /root/tomcat8/bin/shutdown.sh
                 sleep(10s)
                 sudo /root/tomcat8/bin/startup.sh
-            '''
+            '''.trim()
         }
     }
 
