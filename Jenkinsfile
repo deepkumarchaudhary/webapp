@@ -61,10 +61,9 @@ pipeline {
         steps {
             echo 'Restarting Tomcat.....'
             sh '''
-                sudo cd /root/tomcat8/bin
-                ./shutdown.sh
+                sudo /root/tomcat8/bin/shutdown.sh
                 sleep(10s)
-                ./startup.sh
+                sudo /root/tomcat8/bin/startup.sh
             '''
         }
     }
