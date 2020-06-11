@@ -62,7 +62,7 @@ pipeline {
             echo 'Restarting Tomcat.....'
             sh '''
                 sudo /root/tomcat8/bin/shutdown.sh
-                sleep(10s)
+                sleep 5s
                 sudo /root/tomcat8/bin/startup.sh
             '''.trim()
         }
